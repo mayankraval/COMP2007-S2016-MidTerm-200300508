@@ -20,13 +20,18 @@
                     ID="TodoGridView" AutoGenerateColumns="false" DataKeyNames="TodoID"
                     OnRowDeleting="TodoGridView_RowDeleting" AllowPaging="true" PageSize="3"
                     OnPageIndexChanging="TodoGridView_PageIndexChanging" AllowSorting="true"
-                    OnSorting="TodoGridView_Sorting" OnRowDataBound="TodoGridView_RowDataBound" 
+                    OnSorting="TodoGridView_Sorting" OnRowDataBound="TodoGridView_RowDataBound"
                     PagerStyle-CssClass="pagination-ys">
                     <Columns>
                         <asp:BoundField DataField="TodoID" HeaderText="Todo ID" Visible="true" SortExpression="TodoID" />
                         <asp:BoundField DataField="TodoName" HeaderText="Todo Name" Visible="true" SortExpression="TodoName" />
                         <asp:BoundField DataField="TodoNotes" HeaderText="Todo Notes" Visible="true" SortExpression="TodoNotes" />
-                        <asp:BoundField DataField="Completed" HeaderText="Completed" Visible="true" SortExpression="Completed" />
+                        <asp:TemplateField HeaderText="Completed">
+                            <ItemTemplate>
+                                <asp:CheckBox ID="Compeleted" runat="server" HeaderText="Completed"
+                                    Checked='<%#bool.Parse(Eval("Completed").ToString())%>' />
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:HyperLinkField HeaderText="Edit" Text="<i class='fa fa-pencil-square-o fa-lg'></i> Edit" NavigateUrl="~/|TodoDetails.aspx.cs"
                             DataNavigateUrlFields="TodoID" DataNavigateUrlFormatString="TodoDetails.aspx?TodoID={0}"
                             ControlStyle-CssClass="btn btn-primary btn-sm" />
