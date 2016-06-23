@@ -48,7 +48,7 @@ namespace COMP2007_S2016_MidTerm_200300508
         protected void CancelButton_Click(object sender, EventArgs e)
         {
             // Redirect back to Students page
-            Response.Redirect("~/Contoso/Students.aspx");
+            Response.Redirect("~/TodoList.aspx");
         }
 
         protected void SaveButton_Click(object sender, EventArgs e)
